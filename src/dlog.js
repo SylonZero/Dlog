@@ -2,14 +2,29 @@ function dlog(namespace) {
   var self = this;
 
   if(self.dlog) self = this.dlog;
-  
+
+  // Init namespace storage
+  // Add a sample namespace called default
+  if(!self.namespaces) self.namespaces = {
+      default: {
+          active: false,
+          style: {
+              fontSize: '10pt',
+              color: '#63666A'
+          }
+      }
+  };
+
+  // Init override array
+  if(!self.showOnly) self.showOnly = [];
+
   if(namespace && namespace.trim() !== '' &&
       !self.namespaces.hasOwnProperty(namespace)) {
     self.namespaces[namespace] = {
       active: true,
       style: {
-        fontSize: '10pt',
-        color: 'red'
+        fontSize: '8pt',
+        color: '#63666A'
       }
     };
   }
@@ -27,24 +42,12 @@ function dlog(namespace) {
   }
 }
 
-dlog.namespaces = {
-  default: {
-    active: false,
-    style: {
-      fontSize: '10pt',
-      color: 'gray'
-    }
-  }  
-};
-
-dlog.showOnly = [];
-
 dlog.log = function(namespace, args) {
   var self = this;
   var tNamespace = self.namespaces['default'];
   var outputThis = false;
   
-  argArray = Array.from(args);
+  var argArray = Array.from(args);
   
   if(namespace) {
     tNamespace = self.namespaces[namespace];
@@ -60,19 +63,24 @@ dlog.log = function(namespace, args) {
     if(!outputThis) return;
     
     if(tNamespace.style) {
-      console.log('%c' + namespace + ': ', 
+      console.log('%c' + namespace + ':',
         'color: ' + tNamespace.style.color + ';font-size: ' + tNamespace.style.fontSize);
       
       argArray.forEach(function(tArg) {
-        console.log.call(console, '%c' + JSON.stringify(tArg), 
-        'color: ' + tNamespace.style.color + ';font-size: ' + tNamespace.style.fontSize);
+        console.log(tArg);
+        /*console.log.call(console, '%c' + JSON.stringify(tArg),
+        'color: ' + tNamespace.style.color + ';font-size: ' + tNamespace.style.fontSize);*/
       });
+
+      /*console.log('%c----------------------------------',
+          'color: ' + tNamespace.style.color + ';font-size: ' + tNamespace.style.fontSize);*/
     } else {
-      console.log(namespace + ': ');
+      console.log(namespace + ':');
       
       argArray.forEach(function(tArg) {
-        console.log(JSON.stringify(tArg));
+        console.log(tArg);
       });
+      /*console.log('----------------------------------');*/
     }
   }
-}
+};
