@@ -15,3 +15,6 @@ function someFunc2() {
 
 someFunc();
 someFunc2();
+
+// Code representing the need to log something new with an inline namespace
+dlog('InlineModule', 'This is from an inline call to dlog', 'With additional args');
