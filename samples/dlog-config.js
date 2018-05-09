@@ -1,6 +1,6 @@
 dlog.namespaces = {
   module1: {
-    active: false,
+    active: true,
     style: {
       fontSize: '10pt',
       color: 'gray'
