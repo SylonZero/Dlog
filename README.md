@@ -1,4 +1,3 @@
-```markdown
 # Dlog - Custom Logging Utility
 
 Dlog is a flexible and customizable logging utility designed to enhance JavaScript logging capabilities. It provides namespace-based log management, global silence control, and distinguishes between standard logs and error reports. Dlog is ideal for developers looking for more control over their application's logging output.
@@ -87,4 +86,3 @@ Please ensure your code adheres to the existing style and includes appropriate d
 ## License
 
 Dlog is released under the MIT License. See the LICENSE file for more details.
-```
