@@ -12,6 +12,21 @@ header {
     text-align: center;
 }
 
+header nav ul {
+    list-style: none;
+    padding: 0;
+}
+
+header nav ul li {
+    display: inline;
+    margin-right: 20px;
+}
+
+header nav ul li a {
+    color: #ffffff;
+    text-decoration: none;
+}
+
 main {
     padding: 20px;
 }
@@ -23,8 +38,13 @@ h2 {
 pre {
     background-color: #eee;
     padding: 20px;
+    overflow-x: auto;
 }
 
 code {
     color: #007ACC;
+}
+
+section {
+    margin-bottom: 20px;
 }
