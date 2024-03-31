@@ -9,20 +9,61 @@
 <body>
     <header>
         <h1>Dlog Utility</h1>
+        <nav>
+            <ul>
+                <li><a href="#introduction">Introduction</a></li>
+                <li><a href="#features">Features</a></li>
+                <li><a href="#installation">Installation</a></li>
+                <li><a href="#usage">Usage</a></li>
+                <li><a href="#contributing">Contributing</a></li>
+            </ul>
+        </nav>
     </header>
     <main>
         <section id="introduction">
             <h2>Introduction</h2>
-            <p>A flexible and customizable logging utility designed to enhance JavaScript logging capabilities.</p>
+            <p>Dlog is a flexible and customizable logging utility designed to enhance JavaScript logging capabilities. It provides namespace-based log management, global silence control, and distinguishes between standard logs and error reports.</p>
+        </section>
+        <section id="features">
+            <h2>Features</h2>
+            <ul>
+                <li>Namespace-based Logging: Organize logs with customizable styles.</li>
+                <li>Global Silence Control: Easily toggle all logging on or off.</li>
+                <li>Error Logging: Separate methods for standard and error logging.</li>
+                <li>Customizable Styling: Style log messages by namespace.</li>
+                <li>Log Filtering: Focus on logs from specific namespaces.</li>
+            </ul>
+        </section>
+        <section id="installation">
+            <h2>Installation</h2>
+            <p>To use Dlog in your project, copy the <code>Dlog.js</code> file into your project directory. Include Dlog in your JavaScript files using:</p>
+            <pre><code>import Dlog from './path/to/Dlog.js';</code></pre>
+            <p>Or, for CommonJS modules:</p>
+            <pre><code>const Dlog = require('./path/to/Dlog.js');</code></pre>
         </section>
         <section id="usage">
             <h2>Usage</h2>
+            <h3>Basic Logging</h3>
             <pre><code>const logger = new Dlog();
 const debugLog = logger.namespace('debug');
-debugLog.log('This is a debug message.');</code></pre>
+debugLog.log('Debugging the new feature.');</code></pre>
+            <h3>Global Silence</h3>
+            <pre><code>logger.toggleGlobalSilence(true); // Silence all logs
+logger.toggleGlobalSilence(false); // Reactivate logging</code></pre>
+            <h3>Deactivating Namespaces</h3>
+            <pre><code>// Deactivate the 'debug' namespace
+logger.namespaces['debug'].active = false;</code></pre>
+        </section>
+        <section id="contributing">
+            <h2>Contributing</h2>
+            <p>Contributions to Dlog are welcome! To contribute, please follow these steps:</p>
+            <ol>
+                <li>Fork the repository.</li>
+                <li>Create a new branch for your feature or fix.</li>
+                <li>Implement your changes.</li>
+                <li>Submit a pull request.</li>
+            </ol>
         </section>
     </main>
-    <script src="../src/dlog.js"></script>
-    <script src="script.js"></script>
 </body>
 </html>
