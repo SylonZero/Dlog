@@ -33,14 +33,14 @@ Initialize a `Dlog` instance and create loggers for different namespaces:
 ```javascript
 const logger = new Dlog();
 
-const debugLog = logger.namespace('debug');
-const errorLog = logger.namespace('error');
+const appMainLog = logger.namespace('app-master');
+const taskManagerLog = logger.namespace('task-manager');
 
 // Standard logging
-debugLog.log('This is a debug message.');
+appMainLog.log('This is a debug message.');
 
 // Error logging
-errorLog.error('This is an error message.');
+taskManagerLog.error('This is an error message.');
 ```
 
 ### Global Silence
@@ -58,7 +58,7 @@ Deactivate all namespaces or specific ones:
 
 ```javascript
 // Deactivate a specific namespace
-logger.namespaces['debug'].active = false;
+logger.namespaces['task-manager'].active = false;
 
 // Deactivate all namespaces
 logger.deactivateAllNamespaces();
