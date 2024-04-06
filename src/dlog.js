@@ -14,8 +14,8 @@
  * - Option to filter logs to show only specific namespaces.
  *
  * Author: Sai Prakash
- * Version: 1.0
- * Last Modified: Mar 31, 2024
+ * Version: 1.1
+ * Last Modified: Apr 6, 2024
  */
 class Dlog {
   /**
@@ -34,6 +34,36 @@ class Dlog {
     this.showOnly = [];
     this.filterMessageShown = false;
     this.isSilenced = false;
+  }
+
+  /**
+   * Logs a portion of the stack trace to identify the source of the log call. This method allows for
+   * specifying the depth of the stack trace to be logged, helping to pinpoint the origin of the log
+   * message in the code. It safely handles cases where the stack trace might not be available or
+   * sufficiently deep.
+   *
+   * @param {number} depth The desired depth of the stack trace to log. Defaults to 3, indicating that
+   *                       up to three lines of the stack trace will be logged, starting from the call
+   *                       to this log method.
+   */
+  static logLimitedTrace(depth = 3) {
+    try {
+      // Create an Error instance to capture the stack trace
+      const err = new Error();
+
+      // Check if the stack trace is available
+      if (err.stack) {
+        // Split the stack trace into individual lines
+        const stackLines = err.stack.split('\n');
+        // Check if there are enough lines in the stack trace
+        if (stackLines.length > 3) {
+          // Extract the desired part of the stack trace
+          const relevantStackPart = stackLines.slice(4, depth + 2).join('\n');
+          // Log the extracted part of the stack trace
+          console.log(relevantStackPart);
+        }
+      }
+    } catch (exception) {}
   }
 
   /**
@@ -60,9 +90,11 @@ class Dlog {
 
     if (logType === 'error') {
       console.error(`${namespace}:`, ...args);
+      Dlog.logLimitedTrace(3);
     } else {
       const style = `color: ${tNamespace.style.color}; font-size: ${tNamespace.style.fontSize}`;
       console.log(`%c${namespace}:`, style, ...args);
+      Dlog.logLimitedTrace(3);
     }
   }
 
