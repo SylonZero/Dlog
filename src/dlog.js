@@ -31,10 +31,18 @@ class Dlog {
         },
       },
     };
+
     this.showOnly = [];
     this.filterMessageShown = false;
     this.isSilenced = false;
+
+    this.colorIndex = 0; // Keep track of the current color index
+    this.useColor = true; // Global flag to toggle color usage
+    this.defaultColor = '#000000'; // black
   }
+
+  // Add a static property for our built-in color themes
+  static colorTheme = ['#FF4858', '#1B7F79', '#00CCC0', '#72F2EB', '#747F7F'];
 
   /**
    * Logs a portion of the stack trace to identify the source of the log call. This method allows for
@@ -93,6 +101,7 @@ class Dlog {
       Dlog.logLimitedTrace(3);
     } else {
       const style = `color: ${tNamespace.style.color}; font-size: ${tNamespace.style.fontSize}`;
+
       console.log(`%c${namespace}:`, style, ...args);
       Dlog.logLimitedTrace(3);
     }
@@ -105,13 +114,19 @@ class Dlog {
    */
   namespace(namespace) {
     if (namespace && namespace.trim() !== '' && !this.namespaces.hasOwnProperty(namespace)) {
+      // Assign color using the current index, rotate if at the end of the colorTheme array
+      const color = this.useColor ? Dlog.colorTheme[this.colorIndex] : this.defaultColor; // Default to black if color usage is disabled
+
       this.namespaces[namespace] = {
         active: true,
         style: {
           fontSize: '8pt',
-          color: '#63666A',
+          color: color,
         },
       };
+
+      // Move to the next color, wrapping around if necessary
+      this.colorIndex = (this.colorIndex + 1) % Dlog.colorTheme.length;
     }
 
     return {
@@ -135,5 +150,21 @@ class Dlog {
    */
   toggleGlobalSilence(silence = true) {
     this.isSilenced = silence;
+  }
+
+  /**
+   * Toggles the global color usage flag
+   * @param {boolean} [disable=true] - Whether to disable the use of color in the output logs
+   */
+  disableColorUsage(disable = true) {
+    this.useColor = !disable;
+  }
+
+  /**
+   * Sets the default color to use when custom colors are disabled
+   * @param {string} [color='#000000'] - Hex value as a string for the color to use
+   */
+  setDefaultColor(color = '#000000') {
+    this.defaultColor = color;
   }
 }
