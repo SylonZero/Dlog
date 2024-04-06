@@ -45,7 +45,7 @@ taskManagerLog.error('This is an error message.');
 ```
 
 ### Screenshot of sample logs with source file identified
-![Sample Dlog output](/screenshots/dlog-sample-output-1.png "Sample output with source file identified")
+![Sample Dlog output](/dlog-sample-output-1.png "Sample output with source file identified")
 
 ### Global Silence
 
