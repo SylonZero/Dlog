@@ -16,6 +16,8 @@
  * Author: Sai Prakash
  * Version: 1.1
  * Last Modified: Apr 6, 2024
+ * https://github.com/SylonZero/Dlog
+ *
  */
 class Dlog {
   /**
