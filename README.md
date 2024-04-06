@@ -2,6 +2,8 @@
 
 Dlog is a flexible and customizable utility designed to enhance JavaScript logging capabilities while debugging code in the browser. It provides namespace-based log management, global silence control, and distinguishes between standard logs and error reports. Dlog is ideal for developers looking for more control over their application's logging output.
 
+Dlog is inspired by the useful `node-debug` utility for Node.js logging from TJ.
+
 ## Features
 
 - **Namespace-based Logging**: Organize logs into namespaces with customizable styles.
