@@ -5,6 +5,7 @@ Dlog is a flexible and customizable logging utility designed to enhance JavaScri
 ## Features
 
 - **Namespace-based Logging**: Organize logs into namespaces with customizable styles.
+- **Source File Display**: Ensure that the source file of the log message displays in the Dev console for easy access.
 - **Global Silence Control**: Easily toggle logging on and off globally—useful for production.
 - **Error Logging**: Separate methods for logging errors, utilizing `console.error` for error reporting.
 - **Customizable Styling**: Define custom styles for log messages to distinguish between namespaces.
@@ -42,6 +43,9 @@ appMainLog.log('This is a debug message.');
 // Error logging
 taskManagerLog.error('This is an error message.');
 ```
+
+### Screenshot of sample logs with source file identified
+![Sample Dlog output](/screenshots/dlog-sample-output-1.png "Sample output with source file identified")
 
 ### Global Silence
 
