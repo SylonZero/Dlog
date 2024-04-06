@@ -109,29 +109,31 @@ class Dlog {
 
   /**
    * Creates a logging interface for a specific namespace, enabling both standard and error logs.
-   * @param {string} namespace - The namespace to log messages under.
+   * @param {string} namespaceName - The namespace to log messages under.
+   * @param {object} styleOpts - Optional font color and font size settings for this namespace.
    * @returns {Object} An object containing 'log' and 'error' methods for logging.
    */
-  namespace(namespace) {
-    if (namespace && namespace.trim() !== '' && !this.namespaces.hasOwnProperty(namespace)) {
-      // Assign color using the current index, rotate if at the end of the colorTheme array
-      const color = this.useColor ? Dlog.colorTheme[this.colorIndex] : this.defaultColor; // Default to black if color usage is disabled
+  namespace(namespaceName, styleOpts = {}) {
+    if (namespaceName && namespaceName.trim() !== '' && !this.namespaces.hasOwnProperty(namespaceName)) {
+      // Use provided style options or assign color using the current index, rotate if at the end of the colorTheme array
+      const color = this.useColor ? (styleOpts.color || Dlog.colorTheme[this.colorIndex]) : this.defaultColor; // Default to black if color usage is disabled
+      const fontSize = styleOpts.fontSize || '8pt'; // Use provided fontSize or default
 
-      this.namespaces[namespace] = {
+      this.namespaces[namespaceName] = {
         active: true,
         style: {
-          fontSize: '8pt',
+          fontSize: fontSize,
           color: color,
         },
       };
 
-      // Move to the next color, wrapping around if necessary
+      // Move to the next color in the theme, wrapping around if necessary
       this.colorIndex = (this.colorIndex + 1) % Dlog.colorTheme.length;
     }
 
     return {
-      log: (...args) => Dlog.logMessage.call(this, namespace, args, 'log'),
-      error: (...args) => Dlog.logMessage.call(this, namespace, args, 'error'),
+      log: (...args) => Dlog.logMessage.call(this, namespaceName, args, 'log'),
+      error: (...args) => Dlog.logMessage.call(this, namespaceName, args, 'error'),
     };
   }
 
