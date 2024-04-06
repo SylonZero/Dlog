@@ -5,11 +5,13 @@ Dlog is a flexible and customizable logging utility designed to enhance JavaScri
 ## Features
 
 - **Namespace-based Logging**: Organize logs into namespaces with customizable styles.
+- **Customizable Styling**: Define custom styles for log messages to distinguish between namespaces.
+- **Automatic Color Rotation**: Namespaces added within each app get assigned a different color as part of a built-in palette.
 - **Source File Display**: Ensure that the source file of the log message displays in the Dev console for easy access.
 - **Global Silence Control**: Easily toggle logging on and off globally—useful for production.
 - **Error Logging**: Separate methods for logging errors, utilizing `console.error` for error reporting.
-- **Customizable Styling**: Define custom styles for log messages to distinguish between namespaces.
 - **Log Filtering**: Focus on logs from specific namespaces by filtering the output.
+- **Color Toggle**: Turn off color usage globally if that feature is not desired.
 
 ## Installation
 
