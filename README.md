@@ -49,6 +49,42 @@ taskManagerLog.error('This is an error message.');
 ### Screenshot of sample logs with source file identified
 ![Sample Dlog output](/dlog-sample-output-1.png "Sample output with source file identified")
 
+### Creating and Styling Namespaces
+
+You can create namespaces with specific style attributes to organize and differentiate log messages visually. 
+By default, new namespaces get a color from a built-in set of 5 colors that rotate.
+
+#### Creating a Namespace with Style specified
+
+```javascript
+// Create a namespace with custom style
+const logger = new Dlog();
+logger.namespace('task-manager', { color: '#FF4858', fontSize: '12pt' });
+```
+
+#### Setting attributes on an existing namespace
+
+```javascript
+logger.namespaces['task-manager'] = {
+    active: true,
+    style: {
+        color: '#FF4858', // Coral Red
+        fontSize: '12pt'
+    }
+};
+```
+
+### Disabling color
+
+You can disable all color usage - color for all namespaces will use the defaultColor attribute, which can be customized depending on whether you have a dark/light scheme enabled in your browser window:
+
+```javascript
+logger.disableColorUsage(); // turns off all color and uses the defaultColor
+logger.disableColorUsage(false); // turns color back on
+
+logger.setDefaultColor('#ffffff'); // sets the default color to white
+```
+
 ### Global Silence
 
 Toggle global silence to turn off all logging, useful for production environments:
@@ -74,9 +110,11 @@ logger.deactivateAllNamespaces();
 
 - `constructor`: Initializes the Dlog instance.
 - `logMessage(namespace, args, logType)`: Internal method for logging messages.
-- `namespace(namespace)`: Creates a logging interface for a specific namespace.
+- `namespace(namespace, style)`: Creates a logging interface for a specific namespace with optional style attributes.
 - `deactivateAllNamespaces()`: Deactivates all namespaces, preventing their logs from being output.
 - `toggleGlobalSilence(silence = true)`: Toggles the global silence flag.
+- `disableColorUsage(disable = true)`: Turns off the use of custom colors in the log output.
+- `setDefaultColor(color = '#000000')`: Sets the default color to use when custom colors have been disabled.
 
 ## Contributing
 
