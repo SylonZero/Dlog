@@ -14,8 +14,8 @@
  * - Option to filter logs to show only specific namespaces.
  *
  * Author: Sai Prakash
- * Version: 1.1
- * Last Modified: Apr 6, 2024
+ * Version: 1.0.0
+ * Last Modified: Apr 7, 2024
  * https://github.com/SylonZero/Dlog
  *
  */
