@@ -17,17 +17,39 @@ Dlog is inspired by the useful `node-debug` utility for Node.js logging from TJ.
 
 ## Installation
 
-To include Dlog in your project, simply copy the `Dlog.js` file into your project directory. You can then import or require `Dlog` in your JavaScript files.
+Install Dlog via npm:
 
-```javascript
-import Dlog from './path/to/Dlog.js';
+```bash
+npm install dlog-web
 ```
 
-Or, if you're using CommonJS modules:
+### For CommonJS usage
+
+After installation, you can require Dlog in your project:
 
 ```javascript
-const Dlog = require('./path/to/Dlog.js');
+const Dlog = require('dlog-web/dist/dlog.cjs');
 ```
+
+### For ES Modules
+
+If your project uses ES Modules, you can import Dlog directly after installation. This method works well for modern JavaScript projects that utilize import/export syntax.
+
+```javascript
+import Dlog from 'dlog-web/dist/dlog.esm.js';
+```
+
+### For Browser Environments
+
+For direct usage in the browser, you can reference the minified version of Dlog. This method is ideal for projects that aren't using a module bundler or build process.
+
+Locate the file `node_modules/dlog-web/dist/dlog.min.js`. Then, include it in your HTML file using a `<script>` tag:
+
+```html
+<script src="path/to/dlog.min.js"></script>
+```
+
+After including the script, `Dlog` will be available as a global variable:
 
 ## Usage
 

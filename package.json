@@ -1,6 +1,6 @@
 {
   "name": "dlog-web",
-  "version": "1.0.0",
+  "version": "1.0.2",
   "description": "A customizable JavaScript logger for the browser which offers namespace-based log management, global silence control, error logging, and customizable styling for development and production logging.",
   "main": "dist/dlog.cjs.js",
   "module": "dist/dlog.esm.js",
