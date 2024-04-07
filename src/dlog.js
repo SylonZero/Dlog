@@ -172,5 +172,3 @@ class Dlog {
     this.defaultColor = color;
   }
 }
-
-module.exports = Dlog;
