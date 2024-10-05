@@ -32,24 +32,39 @@
 
         <section id="introduction">
             <h2>Introduction</h2>
-            <p>Dlog is a flexible and customizable logging utility designed to enhance JavaScript logging capabilities. It provides namespace-based log management, global silence control, and distinguishes between standard logs and error reports.</p>
+            <p>Dlog is a flexible and customizable utility designed to enhance JavaScript logging capabilities while debugging code in the browser. 
+                It provides namespace-based log management, global silence control, and distinguishes between standard logs and error reports. 
+                Dlog is ideal for developers looking for more control over their application's logging output.</p>
+            <p>Dlog is inspired by the useful <code>node-debug</code> utility for Node.js logging from TJ Holowaychuk.</p>
         </section>
         <section id="features">
             <h2>Features</h2>
             <ul>
-                <li>Namespace-based Logging: Organize logs with customizable styles.</li>
-                <li>Global Silence Control: Easily toggle all logging on or off.</li>
-                <li>Error Logging: Separate methods for standard and error logging.</li>
-                <li>Customizable Styling: Style log messages by namespace.</li>
-                <li>Log Filtering: Focus on logs from specific namespaces.</li>
+                <li><strong>Namespace-based Logging</strong>: Organize logs into namespaces with customizable styles.</li>
+                <li><strong>Customizable Styling</strong>: Define custom styles for log messages to distinguish between namespaces.</li>
+                <li><strong>Automatic Color Rotation</strong>: Namespaces added within each app get assigned a different color as part of a built-in palette.</li>
+                <li><strong>Source File Display</strong>: Ensure that the source file of the log message displays in the Dev console for easy access.</li>
+                <li><strong>Global Silence Control</strong>: Easily toggle logging on and off globally—useful for production.</li>
+                <li><strong>Error Logging</strong>: Separate methods for logging errors, utilizing <code>console.error</code> for error reporting.</li>
+                <li><strong>Log Filtering</strong>: Focus on logs from specific namespaces by filtering the output.</li>
+                <li><strong>Color Toggle</strong>: Turn off color usage globally if that feature is not desired.</li>
             </ul>
         </section>
         <section id="installation">
             <h2>Installation</h2>
-            <p>To use Dlog in your project, copy the <a href="dlog.js"><code>Dlog.js</code></a> file into your project directory. Include Dlog in your JavaScript files using:</p>
-            <pre><code>import Dlog from './path/to/Dlog.js';</code></pre>
-            <p>Or, for CommonJS modules:</p>
-            <pre><code>const Dlog = require('./path/to/Dlog.js');</code></pre>
+            <h3>Install Dlog via npm</h3>
+            <pre tabindex="0"><code>npm install dlog-web</code></pre>
+            <p>Or alternatively, copy the <a href="dlog.js">
+                <code>Dlog.js</code></a> file into your project directory.</p>
+            
+            <h3>For CommonJS usage</h3>
+            <p>After installation, you can require Dlog in your project:</p>
+            <pre><code>const Dlog = require('dlog-web/dist/dlog.cjs');</code></pre>
+
+            <h3>For ES Modules</h3>
+            <p>If your project uses ES Modules, you can import Dlog directly after installation. 
+                This method works well for modern JavaScript projects that utilize import/export syntax.</p>
+            <pre><code>import Dlog from 'dlog-web/dist/dlog.esm.js';</code></pre>
         </section>
         <section id="usage">
             <h2>Usage</h2>
